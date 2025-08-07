@@ -1,0 +1,12 @@
+---
+import {Column, Text} from "@atoms";
+import {SignInForm} from "@molecules";
+import "./AuthContainer.css";
+---
+
+<Column className="AuthContainer">
+  <Column style={{textAlign: "center"}}>
+    <Text label="Sign In" size={1.125} type="primary" color="var(--fg-color)" />
+  </Column>
+  <SignInForm client:load cta_label="Send One-Time Password" />
+</Column>

@@ -13,14 +13,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.12.8"
+    "@ariakit/react": "^0.4.17",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.2.5",
+    "astro": "^5.12.8",
+    "astro-seo": "^0.8.4",
+    "radix-ui": "^1.4.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^3.4.2",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.0",
+    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-organize-imports": "^4.2.0",
+    "tsx": "^4.20.3",
     "vitest": "^3.2.4"
   }
 }

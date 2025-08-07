@@ -1,0 +1,23 @@
+.Button {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: var(--button-color);
+  background: var(--button-background);
+  transition: background var(--hover-animation-time) ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background: color-mix(in srgb, var(--button-background) 75%, transparent);
+}
+
+.Button:disabled {
+  background: color-mix(in srgb, var(--button-background) 25%, transparent);
+  cursor: not-allowed;
+}
+
+.ButtonWrapper {
+  cursor: not-allowed;
+}

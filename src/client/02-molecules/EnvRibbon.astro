@@ -1,0 +1,23 @@
+---
+import {Ribbon} from "@atoms";
+import {env} from "@models";
+
+const environment = env.ENV;
+---
+
+{
+  environment !== "prod" && (
+    <Ribbon
+      text={environment.toUpperCase()}
+      color={
+        environment === "beta"
+          ? "var(--red)"
+          : environment === "stage"
+            ? "var(--orange)"
+            : environment === "dev"
+              ? "var(--indigo)"
+              : "transparent"
+      }
+    />
+  )
+}

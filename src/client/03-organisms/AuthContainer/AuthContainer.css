@@ -1,0 +1,50 @@
+.AuthContainer {
+  width: 100%;
+  max-width: 35%;
+  padding: 2rem;
+  margin: 0 auto;
+  border: 1px solid var(--fg-color);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 1280px) {
+  .AuthContainer {
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 1072px) {
+  .AuthContainer {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 864px) {
+  .AuthContainer {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .AuthContainer {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 672px) {
+  .AuthContainer {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .AuthContainer {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 464px) {
+  .AuthContainer {
+    max-width: 100%;
+  }
+}

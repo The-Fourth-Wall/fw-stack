@@ -1,0 +1,62 @@
+---
+import "@styles";
+
+import {EnvRibbon} from "@molecules";
+import {Head} from "@templates";
+
+type Props = {
+  title: string;
+};
+
+const {title} = Astro.props;
+---
+
+<html lang="en">
+  <Head title={title} />
+
+  <body>
+    <EnvRibbon />
+    <main id="swup">
+      <slot />
+    </main>
+    <style is:global>
+      :root {
+        font-family: Space Mono;
+        font-weight: 400;
+        font-feature-settings: "lnum";
+        color-scheme: dark;
+
+        /* Font smoothing */
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      html {
+        color: var(--fg-color);
+        background-color: color-mix(
+          in srgb,
+          var(--bg-color) 97%,
+          var(--fg-color)
+        );
+      }
+
+      body {
+        overscroll-behavior-y: none;
+        height: 100%;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+      }
+
+      * {
+        scrollbar-color: var(--accent-color) var(--gray);
+      }
+    </style>
+  </body>
+</html>

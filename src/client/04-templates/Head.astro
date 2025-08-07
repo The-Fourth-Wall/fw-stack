@@ -1,0 +1,64 @@
+---
+import {SEO} from "astro-seo";
+
+type Props = {
+  title: string;
+};
+
+const {title} = Astro.props;
+---
+
+<head>
+  <SEO
+    charset="UTF-8"
+    title={title}
+    titleDefault="fw stack"
+    description="tech stack of fourth wall web projects"
+    openGraph={{
+      basic: {
+        title: title,
+        type: "website",
+        image: "/logo.svg",
+        url: "https://localhost:4321",
+      },
+      optional: {
+        description: "fw stack",
+      },
+    }}
+    twitter={{
+      creator: "@twitter",
+      site: "@twitter",
+      title: title,
+      description: "fw stack",
+    }}
+    extend={{
+      link: [
+        {rel: "icon", type: "image/svg+xml", href: "/logo.svg"},
+        {rel: "icon", type: "image/png", href: "/logo.png"},
+        {rel: "preconnect", href: "https://fonts.googleapis.com"},
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "true",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+        },
+      ],
+      meta: [
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1.0",
+        },
+        {
+          name: "generator",
+          content: Astro.generator,
+        },
+        {
+          name: "darkreader-lock",
+        },
+      ],
+    }}
+  />
+</head>

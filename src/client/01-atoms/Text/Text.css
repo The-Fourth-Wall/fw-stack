@@ -1,0 +1,12 @@
+.text-primary {
+  font-weight: 700;
+}
+
+.text-secondary {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.text-accent {
+  font-weight: 700;
+}
