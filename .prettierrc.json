@@ -16,7 +16,12 @@
       }
     }
   ],
-  "plugins": ["prettier-plugin-astro", "@prettier/plugin-xml"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "@prettier/plugin-xml",
+    "prettier-plugin-astro-organize-imports",
+    "prettier-plugin-organize-imports"
+  ],
   "printWidth": 80,
   "semi": true,
   "singleQuote": false,
