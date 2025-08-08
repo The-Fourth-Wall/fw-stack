@@ -1,9 +1,15 @@
 ---
+import {Mdfiles} from "@app";
 import {Row, Text} from "@atoms";
 import {Main} from "@templates";
+
+const file = await Mdfiles.get_file("test");
+if (!file) {
+  return Astro.redirect("/404");
+}
 ---
 
-<Main title="localhost | Page not found">
+<Main title="localhost | Protected">
   <Row
     style={{
       display: "flex",
@@ -11,6 +17,19 @@ import {Main} from "@templates";
       alignItems: "center",
     }}>
     <Text label="PROTECTED" type="primary" size={4} color="var(--fg-color)" />
-    <a href="/">Go back to home</a>
+    <a
+      href="/"
+      style={{
+        border: "1px solid var(--accent-color)",
+        padding: "0.5rem",
+        borderRadius: "0.5rem",
+      }}>Go back to home</a
+    >
+    <Text
+      label={file.title ?? ""}
+      type="primary"
+      size={4}
+      color="var(--fg-color)"
+    />
   </Row>
 </Main>
