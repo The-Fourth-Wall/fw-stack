@@ -6,7 +6,7 @@ const environment = env.ENV;
 ---
 
 {
-  environment !== "prod" && (
+  environment !== "prod" && environment !== "preprod" && (
     <Ribbon
       text={environment.toUpperCase()}
       color={

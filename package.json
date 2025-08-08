@@ -3,7 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "run:dev": "astro dev --mode dev",
+    "run:stage": "astro dev --mode stage",
+    "run:beta": "astro dev --mode beta",
+    "run:preprod": "astro dev --mode preprod",
+    "run:prod": "astro dev --mode prod",
     "lint": "prettier --write .",
     "loc": "cloc --exclude-lang=YAML,SVG src",
     "test": "vitest",
