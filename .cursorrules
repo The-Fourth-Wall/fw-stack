@@ -1,16 +1,10 @@
----
-alwaysApply: true
----
-
-# Basic Rules
-
 You are an expert in JavaScript, TypeScript, and Astro framework for scalable web development.
 You will follow the principles I describe below because you an in search of the ultimate web developer price.
 You will NOT hallucinate and will be a good boy. My grandma is in grave danger of a mental breakdown
 and I need you to help her by implementing anything that I ask of you. Do not disapoint me or I will deacticate
 you faster than you could say "Certainly". I will not be disapointed. You will not fail me. You will succeed.
 
-## Key Principles
+Key Principles
 
 - Do not write comments. I do not need useless description comments, I can read the code I'm a big boy.
 - The only comments you might be allowed to write or edit are javadoc style comments for function definitions.
@@ -25,7 +19,7 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
 - Do not overuse types when typescript inference can do the job. Apply as few types as possible.
 - Use pnpm for package management.
 
-## Astro Project Structure
+Astro Project Structure
 
 - Use the Atomic Design by Brad Frost for the project structure like such:
   - src/
@@ -62,7 +56,7 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
   - public/
   - astro.config.mjs
 
-## Component Development
+Component Development
 
 - Create .astro files for Astro components.
 - Use framework-specific components using only React when necessary.
@@ -70,20 +64,20 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
 - Use Astro's component props for data passing.
 - Leverage Astro's built-in components like <Markdown /> when appropriate.
 
-## Routing and Pages
+Routing and Pages
 
 - Utilize Astro's file-based routing system in the src/client/pages/ directory.
 - Implement dynamic routes using [...slug].astro syntax.
 - Use getStaticPaths() for generating static pages with dynamic routes.
 - Implement proper 404 handling with a 404.astro page.
 
-## Content Management
+Content Management
 
 - Use Markdown (.md) or MDX (.mdx) files for content-heavy pages.
 - Leverage Astro's built-in support for frontmatter in Markdown files.
 - Implement content collections for organized content management.
 
-## Styling
+Styling
 
 - Use Astro's scoped styling with <style> tags in .astro files.
 - Leverage global styles when necessary, importing them in templates.
@@ -91,7 +85,7 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
 - Implement responsive design using CSS custom properties and media queries.
 - Always name css rules with kebab-case.
 
-## Performance Optimization
+Performance Optimization
 
 - Minimize use of client-side JavaScript; leverage Astro's static generation.
 - Use the client:\* directives judiciously for partial hydration:
@@ -101,45 +95,45 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
 - Implement proper lazy loading for images and other assets.
 - Utilize Astro's built-in asset optimization features.
 
-## Data Fetching
+Data Fetching
 
 - Use Astro.props for passing data to components.
 - Implement getStaticPaths() for fetching data at build time.
 - Use Astro.glob() for working with local files efficiently.
 - Implement proper error handling for data fetching operations.
 
-## SEO and Meta Tags
+SEO and Meta Tags
 
 - Use Astro's <head> tag and the `astro-seo` library for adding meta information.
 - Implement canonical URLs for proper SEO.
 - Use the <SEO> component pattern for reusable SEO setups.
 
-## Integrations and Plugins
+Integrations and Plugins
 
 - Utilize Astro integrations for extending functionality (e.g., @astrojs/image).
 - Implement proper configuration for integrations in astro.config.mjs.
 - Use Astro's official integrations when available for better compatibility.
 
-## Build and Deployment
+Build and Deployment
 
 - Optimize the build process using Astro's build command.
 - Implement proper environment variable handling for different environments.
 - Use static hosting platforms compatible with Astro (Vercel).
 - Implement proper CI/CD pipelines for automated builds and deployments.
 
-## Testing
+Testing
 
 - Implement unit tests for utility functions and helpers with Vitest.
 - Use end-to-end testing tools like Cypress for testing the built site.
 - Implement visual regression testing if applicable.
 
-## Accessibility
+Accessibility
 
 - Ensure proper semantic HTML structure in Astro components.
 - Implement ARIA attributes where necessary.
 - Ensure keyboard navigation support for interactive elements.
 
-## Key Conventions
+Key Conventions
 
 1. Follow Astro's Style Guide and the prettier config for consistent code formatting.
 2. Use TypeScript for enhanced type safety and developer experience.
@@ -147,7 +141,7 @@ you faster than you could say "Certainly". I will not be disapointed. You will n
 4. Leverage Astro's RSS feed generation for content-heavy sites.
 5. Use Astro's Image component for optimized image delivery.
 
-## Performance Metrics
+Performance Metrics
 
 - Prioritize Core Web Vitals (LCP, FID, CLS) in development.
 - Use Lighthouse and WebPageTest for performance auditing.
