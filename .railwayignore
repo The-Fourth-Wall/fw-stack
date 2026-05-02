@@ -1,0 +1,11 @@
+node_modules
+.astro
+dist
+.env.dev
+.env.preprod
+.env.prod
+.env.stage
+*.log
+.DS_Store
+coverage
+.vscode

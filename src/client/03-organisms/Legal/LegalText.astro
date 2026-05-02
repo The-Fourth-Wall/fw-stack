@@ -1,0 +1,92 @@
+---
+import {Link, Text} from "@atoms";
+
+type Props = {
+  label: string;
+};
+
+const {label} = Astro.props;
+
+const trimmed = label.trim();
+const has_bullet = trimmed.startsWith("• ");
+const body = has_bullet ? trimmed.slice(2) : trimmed;
+
+const STYLES: Record<string, React.CSSProperties> = {
+  b: {
+    fontWeight: "700",
+  },
+  at: {
+    fontFamily: "Space Mono, monospace",
+    fontSize: "0.875rem",
+    color: "var(--accent-color)",
+    textDecoration: "underline",
+    textUnderlineOffset: "3px",
+  },
+};
+
+const TAG_RE = /<(b|h|at)>(.*?)<\/\1>/g;
+
+const raw = body.split(TAG_RE);
+const segments = raw.flatMap((v, i): {tag: string | null; content: string}[] =>
+  i % 3 === 2
+    ? []
+    : i % 3 === 1
+      ? [{tag: v, content: raw[i + 1]}]
+      : v
+        ? [{tag: null, content: v}]
+        : [],
+);
+---
+
+<span
+  class:list={[
+    "legal-text-wrap",
+    {
+      "legal-text-wrap--bulleted": has_bullet,
+    },
+  ]}>
+  {has_bullet && <span class="legal-text-bullet-dot">•</span>}
+  <span class="legal-text-content">
+    {
+      segments.map(({tag, content}) => {
+        if (tag === "at") {
+          const [href, text] = content.split("\x00");
+          return (
+            <Link href={href} accessibility={text} external style={STYLES.at}>
+              {text}
+            </Link>
+          );
+        }
+
+        return content ? (
+          <Text
+            label={content}
+            size={0.875}
+            type="secondary"
+            color="var(--fg-color)"
+            style={tag ? STYLES[tag] : undefined}
+          />
+        ) : null;
+      })
+    }
+  </span>
+</span>
+
+<style>
+  .legal-text-wrap {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .legal-text-bullet-dot {
+    font-size: 1.5rem;
+    line-height: 0.875;
+    user-select: none;
+    flex-shrink: 0;
+    padding-left: 0.5rem;
+  }
+
+  .legal-text-wrap--bulleted .legal-text-content {
+    padding-left: 0.25rem;
+  }
+</style>

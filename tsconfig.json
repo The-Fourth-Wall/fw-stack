@@ -1,0 +1,26 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app": ["src/app"],
+      "@authentication": ["src/authentication"],
+      "@cache": ["src/cache"],
+      "@content": ["src/content"],
+      "@database": ["src/database"],
+      "@models": ["src/models"],
+      "@security": ["src/security"],
+      "@state": ["src/state"],
+      "@quarks": ["src/client/00-quarks"],
+      "@atoms": ["src/client/01-atoms"],
+      "@molecules": ["src/client/02-molecules"],
+      "@organisms": ["src/client/03-organisms"],
+      "@templates": ["src/client/04-templates"],
+      "@hooks": ["src/client/hooks"],
+      "@styles": ["src/client/styles"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}

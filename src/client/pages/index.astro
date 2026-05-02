@@ -1,0 +1,63 @@
+---
+import {Button, Column, Link, Row, Spacer, Text} from "@atoms";
+import {Main} from "@templates";
+---
+
+<Main title="Fourth Wall">
+  <Column
+    style={{
+      alignItems: "center",
+      justifyContent: "center",
+      minHeight: "100vh",
+      padding: "2rem",
+      textAlign: "center",
+    }}>
+    <Text
+      label="Welcome to Fourth Wall"
+      type="primary"
+      size={2.5}
+      color="var(--fg-color)"
+    />
+    <Spacer size={1} />
+    <Text
+      label="This is a starter template built with Astro, React, and Convex. Replace this content with your own to get started building your project."
+      type="secondary"
+      size={1}
+      color="var(--fg-color)"
+      style={{maxWidth: "36rem", lineHeight: 1.6}}
+    />
+    <Spacer size={2} />
+    <Row style={{gap: "1rem"}}>
+      <Link href="/terms" accessibility="view terms of service">
+        <Button
+          style={{
+            padding: "0.5rem 1rem",
+            borderRadius: "0.125rem",
+            backgroundColor: "var(--accent-color)",
+          }}>
+          <Text
+            label="TERMS OF SERVICE"
+            type="accent"
+            size={0.875}
+            color="var(--fg-color)"
+          />
+        </Button>
+      </Link>
+      <Link href="/privacy" accessibility="view privacy policy">
+        <Button
+          style={{
+            padding: "0.5rem 1rem",
+            borderRadius: "0.125rem",
+            backgroundColor: "var(--accent-color)",
+          }}>
+          <Text
+            label="PRIVACY POLICY"
+            type="accent"
+            size={0.875}
+            color="var(--fg-color)"
+          />
+        </Button>
+      </Link>
+    </Row>
+  </Column>
+</Main>

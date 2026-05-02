@@ -1,0 +1,32 @@
+---
+import {Spinner} from "@atoms";
+---
+
+<div id="03-organisms/PageLoader.astro" class="PageLoader">
+  <Spinner />
+</div>
+
+<style>
+  .PageLoader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 100ms ease,
+      visibility 100ms ease;
+  }
+
+  .PageLoader.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>

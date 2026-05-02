@@ -1,0 +1,30 @@
+---
+import {Ribbon} from "@atoms";
+import {env} from "@models";
+
+const environment = env.PUBLIC_ENV;
+
+const canary_forced =
+  Astro.cookies.get("canary_forced")?.value ??
+  Astro.request.headers.get("x-canary-forced") ??
+  undefined;
+
+const ribbon_color =
+  environment === "prod" && canary_forced
+    ? "var(--red)"
+    : environment === "preprod" && canary_forced
+      ? "var(--green)"
+      : environment === "stage"
+        ? "var(--orange)"
+        : environment === "dev"
+          ? "var(--indigo)"
+          : "transparent";
+
+const show_ribbon = ribbon_color !== "transparent";
+---
+
+{
+  show_ribbon && (
+    <Ribbon text={environment.toUpperCase()} color={ribbon_color} />
+  )
+}

@@ -1,0 +1,88 @@
+---
+import {Column, Spacer} from "@atoms";
+import Main from "./Main.astro";
+
+type Props = {
+  title: string;
+};
+
+const {title} = Astro.props;
+---
+
+<Main title={title}>
+  <div class="spacer-wide">
+    <Spacer size={3.5} />
+  </div>
+  <div class="spacer-thin">
+    <Spacer size={2.5} />
+  </div>
+
+  <Column style={{alignItems: "center"}}>
+    <div class="centered-form">
+      <slot />
+    </div>
+  </Column>
+
+  <Spacer size={4} />
+</Main>
+
+<style>
+  .centered-form {
+    width: 100%;
+    max-width: 40%;
+  }
+
+  .spacer-thin {
+    display: none;
+  }
+
+  @media (max-width: 1800px) {
+    .centered-form {
+      max-width: 45%;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .centered-form {
+      max-width: 50%;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .centered-form {
+      max-width: 60%;
+    }
+  }
+
+  @media (max-width: 1072px) {
+    .centered-form {
+      max-width: 70%;
+    }
+  }
+
+  @media (max-width: 864px) {
+    .centered-form {
+      max-width: 80%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .centered-form {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 464px) {
+    .centered-form {
+      max-width: 95%;
+    }
+
+    .spacer-wide {
+      display: none;
+    }
+
+    .spacer-thin {
+      display: block;
+    }
+  }
+</style>

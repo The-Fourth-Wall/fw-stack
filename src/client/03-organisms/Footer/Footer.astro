@@ -1,0 +1,22 @@
+---
+import {Row, Spacer, Text} from "@atoms";
+import {Copyright} from "lucide-react";
+
+type Props = {
+  copyright: string;
+  size: number;
+  justifyContent?: React.CSSProperties["justifyContent"];
+};
+
+const {copyright, size, justifyContent = "flex-end"} = Astro.props;
+---
+
+<Row
+  style={{
+    justifyContent,
+    alignItems: "center",
+  }}>
+  <Text label={copyright} color="var(--fg-color)" type="primary" size={size} />
+  <Spacer size={0.75} />
+  <Copyright width={`${size}rem`} height={`${size}rem`} strokeWidth={1.5} />
+</Row>

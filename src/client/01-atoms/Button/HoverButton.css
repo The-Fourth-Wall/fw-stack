@@ -1,0 +1,14 @@
+.HoverButton {
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: all var(--hover-animation-time) ease-in-out;
+}
+
+.HoverButton:hover {
+  border: 1px solid color-mix(in srgb, var(--fg-color) 75%, transparent);
+  background-color: color-mix(in srgb, var(--fg-color) 7.5%, transparent);
+}
+
+.HoverButton:disabled {
+  background-color: color-mix(in srgb, var(--fg-color) 7.5%, transparent);
+}

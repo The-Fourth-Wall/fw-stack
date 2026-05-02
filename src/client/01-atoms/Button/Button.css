@@ -1,0 +1,17 @@
+.Button {
+  padding: 0.5rem 1rem;
+  transition: all var(--hover-animation-time) ease-in-out;
+  cursor: pointer;
+}
+
+.Button:hover {
+  opacity: 0.75;
+}
+
+.Button:disabled {
+  opacity: 0.33;
+}
+
+.ButtonWrapper {
+  cursor: not-allowed;
+}

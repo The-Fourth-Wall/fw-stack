@@ -1,0 +1,15 @@
+---
+import {Column, Spacer, Text} from "@atoms";
+
+type Props = {
+  label: string;
+};
+
+const {label} = Astro.props;
+---
+
+<Column>
+  <Spacer size={2} />
+  <Text label={label} size={1.25} type="primary" color="var(--fg-color)" />
+  <Spacer size={1} />
+</Column>

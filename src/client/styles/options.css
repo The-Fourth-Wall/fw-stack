@@ -1,0 +1,9 @@
+body {
+  font-family:
+    Space Mono,
+    monospace;
+}
+
+:root {
+  --hover-animation-time: 150ms;
+}

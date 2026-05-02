@@ -1,0 +1,102 @@
+---
+import {Column, HoverButton, Link, Spacer, Text} from "@atoms";
+import {Main} from "@templates";
+---
+
+<Main title="Fourth Wall | Page not found">
+  <Column
+    style={{
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      height: "calc(90vh - 3rem)",
+      paddingLeft: "1rem",
+      paddingRight: "1rem",
+    }}>
+    <div class="glitch">404</div>
+    <Spacer size={1} />
+    <Text
+      label="You have stumbled upon a page that is behind the Fourth Wall."
+      type="secondary"
+      size={1}
+      color="var(--fg-color)"
+    />
+    <Spacer size={2} />
+    <Link href="/" accessibility="go back home" noSwup>
+      <HoverButton
+        style={{
+          padding: "0.5rem 1rem",
+          borderRadius: "0.125rem",
+        }}>
+        <Text
+          label="GO BACK HOME"
+          type="accent"
+          size={0.875}
+          color="var(--fg-color)"
+        />
+      </HoverButton>
+    </Link>
+  </Column>
+</Main>
+
+<style>
+  .glitch {
+    color: var(--fg-color);
+    font-family:
+      Space Mono,
+      monospace;
+    font-size: 5rem;
+    font-weight: bold;
+    position: relative;
+    text-shadow:
+      0.25rem 0 0 hsla(250, 74%, 52%, 0.75),
+      -0.125rem -0.25rem 0 hsla(285, 100%, 75%, 0.75),
+      0.125rem 0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    animation: glitch 500ms infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow:
+        0.25rem 0 0 hsla(250, 74%, 52%, 0.75),
+        -0.25rem -0.125rem 0 hsla(285, 100%, 75%, 0.75),
+        -0.125rem 0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    14% {
+      text-shadow:
+        0.25rem 0 0 hsla(250, 74%, 52%, 0.75),
+        -0.25rem -0.125rem 0 hsla(285, 100%, 75%, 0.75),
+        -0.125rem 0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    15% {
+      text-shadow:
+        -0.25rem -0.125rem 0 hsla(250, 74%, 52%, 0.75),
+        0.125rem 0.125rem 0 hsla(285, 100%, 75%, 0.75),
+        -0.25rem -0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    49% {
+      text-shadow:
+        -0.25rem -0.125rem 0 hsla(250, 74%, 52%, 0.75),
+        0.125rem 0.125rem 0 hsla(285, 100%, 75%, 0.75),
+        -0.25rem -0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    50% {
+      text-shadow:
+        0.125rem 0.25rem 0 hsla(250, 74%, 52%, 0.75),
+        0.25rem 0 0 hsla(285, 100%, 75%, 0.75),
+        0 -0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    99% {
+      text-shadow:
+        0.125rem 0.25rem 0 hsla(250, 74%, 52%, 0.75),
+        0.25rem 0 0 hsla(285, 100%, 75%, 0.75),
+        0 -0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+    100% {
+      text-shadow:
+        -0.125rem 0 0 hsla(250, 74%, 52%, 0.75),
+        -0.125rem -0.125rem 0 hsla(285, 100%, 75%, 0.75),
+        -0.125rem -0.25rem 0 hsla(0, 76%, 51%, 0.75);
+    }
+  }
+</style>

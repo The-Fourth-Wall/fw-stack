@@ -1,0 +1,196 @@
+---
+import "@styles";
+
+import {EnvRibbon, PageLoader} from "@organisms";
+import {StateInitializer} from "@state";
+import {Head} from "@templates";
+
+type Props = {
+  title: string;
+  style?: React.CSSProperties;
+};
+
+const {title, style} = Astro.props;
+const state = Astro.locals.state;
+---
+
+<script>
+  import {useBrowser} from "@hooks";
+  import SwupHeadPlugin from "@swup/head-plugin";
+  import SwupJsPlugin from "@swup/js-plugin";
+  import SwupScriptsPlugin from "@swup/scripts-plugin";
+  import SwupScrollPlugin from "@swup/scroll-plugin";
+  import gsap from "gsap";
+  import {ScrollTrigger} from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+  import Swup from "swup";
+
+  const {get_user_agent} = useBrowser();
+
+  const lenis = new Lenis({
+    duration: 0.3,
+    easing: t => 1 - Math.pow(1 - t, 5),
+    syncTouch: false,
+  });
+
+  window.lenis = lenis;
+
+  lenis.on("scroll", () => {
+    ScrollTrigger.update();
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  const is_not_webkit = get_user_agent({document, navigator}) !== "WebKit";
+
+  const forward_out = async () => {
+    await gsap.to("#swup", {
+      opacity: 0,
+      x: is_not_webkit ? -150 : undefined,
+      duration: 0.2,
+      ease: "power2.in",
+      force3D: true,
+    });
+  };
+  const forward_in = async () => {
+    await gsap.fromTo(
+      "#swup",
+      {opacity: 0, x: is_not_webkit ? 150 : undefined, force3D: true},
+      {
+        opacity: 1,
+        x: is_not_webkit ? 0 : undefined,
+        duration: 0.2,
+        ease: "power2.out",
+      },
+    );
+    const swup = document.getElementById("swup");
+    if (swup) {
+      swup.style.transform = "";
+    }
+  };
+
+  const swup = new Swup({
+    containers: ["#swup"],
+    cache: false,
+    animateHistoryBrowsing: true,
+    plugins: [
+      new SwupHeadPlugin({
+        persistAssets: true,
+      }),
+      new SwupScrollPlugin({
+        animateScroll: {
+          betweenPages: false,
+          samePage: false,
+          samePageWithHash: false,
+        },
+      }),
+      new SwupScriptsPlugin({
+        optin: true,
+      }),
+      new SwupJsPlugin({
+        animations: [
+          {
+            from: "(.*)",
+            to: "(.*)",
+            out: forward_out,
+            in: forward_in,
+          },
+        ],
+      }),
+    ],
+  });
+
+  window.swup = swup;
+
+  swup.hooks.before("content:replace", () => {
+    document
+      .querySelectorAll(
+        swup.options.containers.map(c => `${c} astro-island`).join(","),
+      )
+      .forEach(island => {
+        island.dispatchEvent(new CustomEvent("astro:unmount"));
+      });
+  });
+
+  swup.hooks.replace("fetch:request", (_visit, {url, options}) => {
+    return fetch(url, {
+      ...options,
+      cache: "no-store",
+    });
+  });
+
+  let show_loader_timeout: ReturnType<typeof setTimeout>;
+  let lenis_start_timeout: ReturnType<typeof setTimeout>;
+  swup.hooks.on("visit:start", () => {
+    lenis.stop();
+    clearTimeout(show_loader_timeout);
+    clearTimeout(lenis_start_timeout);
+    show_loader_timeout = setTimeout(() => {
+      document
+        .getElementById("03-organisms/PageLoader.astro")
+        ?.classList.add("is-active");
+    }, 500);
+  });
+
+  swup.hooks.on("content:replace", () => {
+    clearTimeout(show_loader_timeout);
+    document
+      .getElementById("03-organisms/PageLoader.astro")
+      ?.classList.remove("is-active");
+
+    lenis_start_timeout = setTimeout(() => {
+      lenis.start();
+      ScrollTrigger.refresh();
+    }, 300);
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  });
+</script>
+
+<html lang="en">
+  <Head title={title} />
+
+  <body style={style}>
+    <PageLoader />
+    <EnvRibbon />
+
+    <main id="swup">
+      <StateInitializer state={state} client:load />
+      <slot />
+    </main>
+    <style is:global>
+      :root {
+        font-weight: 400;
+        font-feature-settings: "lnum";
+        color-scheme: dark;
+
+        /* Font smoothing */
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      html {
+        color: var(--fg-color);
+        background-color: color-mix(in srgb, var(--bg-color) 97%, var(--white));
+      }
+
+      body {
+        overscroll-behavior-y: none;
+        height: 100%;
+      }
+
+      * {
+        scrollbar-color: var(--accent-color) var(--gray);
+      }
+    </style>
+  </body>
+</html>
